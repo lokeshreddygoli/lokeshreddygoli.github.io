@@ -1,147 +1,575 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Lokesh Reddy | Resume</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G. Lokesh Reddy — Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0e0d;
+    --paper: #faf8f4;
+    --accent: #1a3a2a;
+    --accent-light: #2d6649;
+    --rule: #c8bfa8;
+    --muted: #6b6358;
+    --tag-bg: #eae6de;
+    --link: #1a3a2a;
+  }
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: #f4f6f9;
-            color: #333;
-            line-height: 1.6;
-        }
+  @media print {
+    body { background: white !important; }
+    .page { box-shadow: none !important; }
+  }
 
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            background: #fff;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-        }
+  body {
+    background: #e8e4db;
+    font-family: 'Outfit', sans-serif;
+    color: var(--ink);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+  }
 
-        h1 {
-            font-size: 32px;
-            color: #1f2937;
-        }
+  .page {
+    background: var(--paper);
+    width: 794px;
+    min-height: 1123px;
+    padding: 52px 56px 48px;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.18), 0 1px 6px rgba(0,0,0,0.08);
+    position: relative;
+    overflow: hidden;
+  }
 
-        h2 {
-            margin-top: 30px;
-            margin-bottom: 10px;
-            font-size: 20px;
-            color: #111827;
-            border-bottom: 2px solid #e5e7eb;
-            padding-bottom: 5px;
-        }
+  /* Subtle grain texture overlay */
+  .page::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
 
-        .contact {
-            margin-top: 10px;
-            color: #555;
-        }
+  /* Left accent bar */
+  .page::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--accent) 0%, var(--accent-light) 60%, transparent 100%);
+  }
 
-        .contact a {
-            text-decoration: none;
-            color: #2563eb;
-        }
+  .content { position: relative; z-index: 1; }
 
-        ul {
-            margin-left: 20px;
-        }
+  /* ── HEADER ── */
+  .header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    align-items: end;
+    padding-bottom: 22px;
+    border-bottom: 1.5px solid var(--rule);
+    margin-bottom: 26px;
+  }
 
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 18px;
-            background: #2563eb;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 6px;
-            transition: 0.3s;
-        }
+  .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 46px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    line-height: 1;
+    color: var(--ink);
+  }
 
-        .btn:hover {
-            background: #1e40af;
-        }
+  .name span {
+    color: var(--accent-light);
+  }
 
-        .section {
-            margin-top: 15px;
-        }
+  .tagline {
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    font-weight: 300;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
 
-        footer {
-            margin-top: 40px;
-            text-align: center;
-            font-size: 14px;
-            color: #777;
-        }
+  .contact-block {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-end;
+  }
 
-        @media (max-width: 600px) {
-            .container {
-                padding: 20px;
-            }
-        }
-    </style>
+  .contact-item {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .contact-item:hover { color: var(--accent-light); }
+
+  .contact-item .dot {
+    width: 4px; height: 4px;
+    background: var(--accent-light);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── BODY GRID ── */
+  .body-grid {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 36px;
+  }
+
+  /* ── SECTION ── */
+  .section { margin-bottom: 26px; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  /* ── SUMMARY ── */
+  .summary-text {
+    font-size: 12.5px;
+    line-height: 1.75;
+    color: #2c2820;
+    font-weight: 300;
+  }
+
+  /* ── PROJECT ── */
+  .project {
+    margin-bottom: 18px;
+    padding-left: 14px;
+    border-left: 2px solid var(--rule);
+    transition: border-color 0.2s;
+  }
+
+  .project:hover { border-color: var(--accent-light); }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 3px;
+  }
+
+  .project-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.2px;
+  }
+
+  .project-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--accent-light);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid transparent;
+  }
+  .project-link:hover { border-color: var(--accent-light); }
+
+  .project-tech {
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px;
+    color: var(--muted);
+    margin-bottom: 7px;
+    letter-spacing: 0.04em;
+  }
+
+  .project-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .project-bullets li {
+    font-size: 11.5px;
+    line-height: 1.6;
+    color: #3a342c;
+    font-weight: 300;
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .project-bullets li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-light);
+    font-size: 10px;
+    top: 1px;
+  }
+
+  /* ── EDUCATION ── */
+  .edu-item {
+    margin-bottom: 14px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    align-items: start;
+  }
+
+  .edu-degree {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .edu-inst {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+    font-weight: 300;
+  }
+
+  .edu-score {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--accent-light);
+    text-align: right;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  .edu-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    text-align: right;
+    margin-top: 2px;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {}
+
+  /* ── SKILL CATEGORY ── */
+  .skill-category {
+    margin-bottom: 16px;
+  }
+
+  .skill-cat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .tag {
+    background: var(--tag-bg);
+    color: #3d3428;
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── CERTIFICATIONS ── */
+  .cert-item {
+    margin-bottom: 12px;
+    padding: 10px 12px;
+    background: var(--tag-bg);
+    border-radius: 3px;
+    border-left: 3px solid var(--accent-light);
+  }
+
+  .cert-name {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.4;
+    margin-bottom: 3px;
+  }
+
+  .cert-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--accent-light);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+  }
+  .cert-link:hover { text-decoration: underline; }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: var(--rule);
+    margin: 14px 0;
+  }
+
+  /* ── PAGE NUMBER / FOLIO ── */
+  .folio {
+    position: absolute;
+    bottom: 20px;
+    right: 56px;
+    font-family: 'DM Mono', monospace;
+    font-size: 8.5px;
+    color: var(--rule);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+</style>
 </head>
-
 <body>
+<div class="page">
+  <div class="folio">G. Lokesh Reddy · 2025</div>
 
-<div class="container">
+  <div class="content">
 
-    <h1>Lokesh Reddy</h1>
-    <div class="contact">
-        📧 lokeshreddygoli2005@gmail.com | 📱 +91 9640917131 <br>
-        🔗 <a href="https://github.com/lokeshreddygoli" target="_blank">GitHub</a> |
-        <a href="www.linkedin.com/in/lokesh-reddy-997580291" target="_blank">LinkedIn</a>
+    <!-- HEADER -->
+    <div class="header">
+      <div>
+        <div class="name">G. <span>Lokesh</span> Reddy</div>
+        <div class="tagline">Computer Science &amp; Engineering · VIT-AP · Amaravati</div>
+      </div>
+      <div class="contact-block">
+        <a class="contact-item" href="mailto:lokeshreddygoli2005@gmail.com">
+          <span class="dot"></span>lokeshreddygoli2005@gmail.com
+        </a>
+        <a class="contact-item" href="tel:+919640917131">
+          <span class="dot"></span>+91-9640917131
+        </a>
+        <a class="contact-item" href="https://github.com/lokeshreddygoli" target="_blank">
+          <span class="dot"></span>github.com/lokeshreddygoli
+        </a>
+        <a class="contact-item" href="https://linkedin.com/in/lokeshreddygoli" target="_blank">
+          <span class="dot"></span>linkedin.com/in/lokeshreddygoli
+        </a>
+      </div>
     </div>
 
-    <a href="resume.pdf" class="btn" download>Download Resume (PDF)</a>
+    <!-- BODY -->
+    <div class="body-grid">
 
-    <h2>Profile</h2>
-    <div class="section">
-        Computer Science student passionate about Data Structures & Algorithms,
-        Java development, and Backend systems. Strong problem-solving skills
-        with hands-on experience in C, C++, Java, and SQL.
-    </div>
+      <!-- MAIN COLUMN -->
+      <div class="main">
 
-    <h2>Skills</h2>
-    <div class="section">
-        <ul>
-            <li>Programming: Java, C, C++</li>
-            <li>Database: SQL</li>
-            <li>Web: HTML, CSS</li>
-            <li>Concepts: OOPS, Data Structures, Algorithms</li>
-        </ul>
-    </div>
+        <!-- SUMMARY -->
+        <div class="section">
+          <div class="section-label">Profile</div>
+          <p class="summary-text">
+            Computer Science undergraduate at VIT-AP with strong foundations in data structures, algorithms, backend development, and scalable systems. Proficient in Java, Python, SQL, and cloud technologies, with hands-on experience building REST APIs and data-processing workflows. Interested in distributed systems, data engineering, and product development.
+          </p>
+        </div>
 
-    <h2>Projects</h2>
-    <div class="section">
-        <strong>HR Management System</strong><br>
-        Console-based application to manage employee records using C/C++.
+        <!-- PROJECTS -->
+        <div class="section">
+          <div class="section-label">Projects</div>
 
-        <br><br>
+          <div class="project">
+            <div class="project-header">
+              <span class="project-name">Real-Time Fraud Detection Dashboard</span>
+              <a class="project-link" href="https://github.com/lokeshreddygoli/fraud-detection-dashboard" target="_blank">↗ View Repository</a>
+            </div>
+            <div class="project-tech">Java · Spring Boot · MySQL · Python</div>
+            <ul class="project-bullets">
+              <li>Developed a backend system using Spring Boot for real-time transaction processing.</li>
+              <li>Built REST APIs for analytics, tracking, and alert management.</li>
+              <li>Optimized MySQL queries using indexing strategies for faster data retrieval.</li>
+              <li>Automated reporting and data workflows using Python scripts.</li>
+            </ul>
+          </div>
 
-        <strong>Banking System</strong><br>
-        OOP-based banking application supporting account management operations.
-    </div>
+          <div class="project">
+            <div class="project-header">
+              <span class="project-name">Full-Stack Food Delivery Platform</span>
+              <a class="project-link" href="https://github.com/lokeshreddygoli/premium-food-delivery" target="_blank">↗ View Repository</a>
+            </div>
+            <div class="project-tech">React.js · Node.js · MySQL</div>
+            <ul class="project-bullets">
+              <li>Built a multi-role application managing orders, products, and users.</li>
+              <li>Developed REST APIs using Node.js with MySQL as the relational backend.</li>
+              <li>Implemented JWT-based authentication for secure session management.</li>
+              <li>Designed a fully responsive UI with React.js component architecture.</li>
+            </ul>
+          </div>
 
-    <h2>Education</h2>
-    <div class="section">
-        B.Tech in Computer Science Engineering <br>
-        Vellore Institute of Technology-AP
-    </div>
+          <div class="project">
+            <div class="project-header">
+              <span class="project-name">Satellite Image Change Detection</span>
+              <a class="project-link" href="https://github.com/lokeshreddygoli/Satellite-Image-Change-Detection" target="_blank">↗ View Repository</a>
+            </div>
+            <div class="project-tech">PyTorch · OpenCV · Python</div>
+            <ul class="project-bullets">
+              <li>Built a deep learning model to detect temporal changes in satellite imagery.</li>
+              <li>Applied preprocessing pipelines and data augmentation using OpenCV.</li>
+              <li>Improved model accuracy through systematic hyperparameter tuning.</li>
+            </ul>
+          </div>
+        </div>
 
-    <footer>
-        © 2026 Lokesh Reddy | Built with GitHub Pages
-    </footer>
+        <!-- EDUCATION -->
+        <div class="section">
+          <div class="section-label">Education</div>
 
-</div>
+          <div class="edu-item">
+            <div>
+              <div class="edu-degree">B.Tech — Computer Science &amp; Engineering</div>
+              <div class="edu-inst">VIT-AP University, Amaravati</div>
+            </div>
+            <div>
+              <div class="edu-score">CGPA 7.90</div>
+              <div class="edu-year">Expected 2027</div>
+            </div>
+          </div>
 
+          <div class="edu-item">
+            <div>
+              <div class="edu-degree">Intermediate (MPC)</div>
+              <div class="edu-inst">Sri Abhidha College</div>
+            </div>
+            <div>
+              <div class="edu-score">87%</div>
+              <div class="edu-year">2023</div>
+            </div>
+          </div>
+
+          <div class="edu-item">
+            <div>
+              <div class="edu-degree">SSC</div>
+              <div class="edu-inst">Sri Chaitanya School</div>
+            </div>
+            <div>
+              <div class="edu-score">100%</div>
+              <div class="edu-year">2021</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /main -->
+
+      <!-- SIDEBAR -->
+      <div class="sidebar">
+
+        <div class="section">
+          <div class="section-label">Skills</div>
+
+          <div class="skill-category">
+            <div class="skill-cat-label">Languages</div>
+            <div class="skill-tags">
+              <span class="tag">Java</span>
+              <span class="tag">Python</span>
+              <span class="tag">SQL</span>
+              <span class="tag">JavaScript</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-cat-label">Backend &amp; APIs</div>
+            <div class="skill-tags">
+              <span class="tag">Spring Boot</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">REST APIs</span>
+              <span class="tag">JDBC</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-cat-label">Frontend</div>
+            <div class="skill-tags">
+              <span class="tag">React.js</span>
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-cat-label">Databases</div>
+            <div class="skill-tags">
+              <span class="tag">MySQL</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">MongoDB</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-cat-label">Cloud &amp; Tools</div>
+            <div class="skill-tags">
+              <span class="tag">AWS EC2</span>
+              <span class="tag">AWS S3</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Git</span>
+              <span class="tag">GitHub</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-cat-label">Core CS</div>
+            <div class="skill-tags">
+              <span class="tag">DSA</span>
+              <span class="tag">OOP</span>
+              <span class="tag">DBMS</span>
+              <span class="tag">OS</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+          <div class="section-label">Certifications</div>
+
+          <div class="cert-item">
+            <div class="cert-name">AWS Academy Graduate<br>Cloud Architecting</div>
+            <a class="cert-link" href="https://www.credly.com/badges/fe90d795-1dc2-45fb-9567-9ac43e806770/public_url" target="_blank">↗ Verify on Credly</a>
+          </div>
+
+          <div class="cert-item">
+            <div class="cert-name">AWS Academy Graduate<br>Cloud Foundations</div>
+            <a class="cert-link" href="https://www.credly.com/badges/92ae8fcc-ea43-4bab-8c23-de7bc8e1de8d/public_url" target="_blank">↗ Verify on Credly</a>
+          </div>
+        </div>
+
+      </div><!-- /sidebar -->
+    </div><!-- /body-grid -->
+
+  </div><!-- /content -->
+</div><!-- /page -->
 </body>
 </html>
